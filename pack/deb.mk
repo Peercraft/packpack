@@ -48,6 +48,10 @@ prepare: $(BUILDDIR)/$(PRODUCT)-$(VERSION)/debian/ \
 $(BUILDDIR)/$(DPKG_CHANGES): $(BUILDDIR)/$(PRODUCT)-$(VERSION)/debian/ \
                              $(BUILDDIR)/$(DPKG_ORIG_TARBALL)
 	@echo "-------------------------------------------------------------------"
+	@echo "Setting up external repos"
+	@echo "-------------------------------------------------------------------"
+	curl -s https://packagecloud.io/install/repositories/peercraft/peercraft/script.deb.sh | sudo bash
+	@echo "-------------------------------------------------------------------"
 	@echo "Installing dependencies"
 	@echo "-------------------------------------------------------------------"
 	## Clear APT cache to fix Hash sum mismatch
